@@ -33,9 +33,14 @@ Este projeto contém um **validador de cartões de crédito** implementado em **
 - Naranja
 - UnionPay
 
-### Exemplo de Uso
+## Exemplo de Uso
 
 Ao executar o código, uma janela de prompt solicitará o número do cartão de crédito. Após inserir o número, o código identificará a bandeira do cartão e verificará se o número é válido usando o algoritmo de Luhn. O resultado será exibido em uma janela de alerta.
+
+## 📝 Nota
+
+O número do cartão de crédito pode ser informado com ou sem espaços entre os blocos numéricos.  
+O código trata automaticamente essa variação, removendo todos os espaços antes de realizar a verificação da bandeira e a validação pelo algoritmo de Luhn.
 
 ## Informações Adicionais
 
