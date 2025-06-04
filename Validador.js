@@ -1,13 +1,11 @@
 /**
  * Valida um número de cartão de crédito usando o algoritmo de Luhn.
- * Esse algoritmo é usado para verificar se o número do cartão é potencialmente válido.
  */
 function validarLuhn(numeroCartao) {
     let soma = 0;
     let alternar = false;
-    numeroCartao = numeroCartao.replace(/\s/g, ""); // Remove espaços em branco
+    numeroCartao = numeroCartao.replace(/\s/g, "");
 
-    // Percorre os dígitos do cartão da direita para a esquerda
     for (let i = numeroCartao.length - 1; i >= 0; i--) {
         let digito = parseInt(numeroCartao.charAt(i), 10);
         if (alternar) {
@@ -18,15 +16,14 @@ function validarLuhn(numeroCartao) {
         alternar = !alternar;
     }
 
-    return soma % 10 === 0; // Retorna true se o número for válido
+    return soma % 10 === 0;
 }
 
 /**
  * Identifica a bandeira do cartão de crédito com base em expressões regulares.
- * Suporta diversas bandeiras populares.
  */
 function identificarBandeira(numeroCartao) {
-    numeroCartao = numeroCartao.replace(/\s/g, ""); // Remove espaços
+    numeroCartao = numeroCartao.replace(/\s/g, "");
 
     const bandeiras = {
         "Visa": /^4[0-9]{12}(?:[0-9]{3})?$/,
@@ -45,7 +42,6 @@ function identificarBandeira(numeroCartao) {
         "UnionPay": /^(62[0-9]{14,17})$/
     };
 
-    // Verifica cada expressão regular até encontrar uma correspondência
     for (let bandeira in bandeiras) {
         if (bandeiras[bandeira].test(numeroCartao)) {
             return bandeira;
@@ -57,12 +53,12 @@ function identificarBandeira(numeroCartao) {
 
 /**
  * Inicia o processo de validação interativa com o usuário.
- * Solicita o número do cartão, identifica a bandeira e valida com Luhn.
  */
 function iniciarValidacao() {
     while (true) {
-        let numeroCartao = prompt("Digite o número do cartão de crédito ou pressione a tecla ENTER para sair:");
-        if (!numeroCartao.trim()) {
+        let numeroCartao = prompt("Validador de Cartões v1.0\n\nDigite o número do cartão de crédito ou pressione ENTER para sair:");
+
+        if (numeroCartao === null || !numeroCartao.trim()) {
             alert("Encerrando o validador de cartões. Obrigado!");
             break;
         }
